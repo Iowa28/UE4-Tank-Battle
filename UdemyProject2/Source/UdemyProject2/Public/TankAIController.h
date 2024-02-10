@@ -15,8 +15,14 @@ class UDEMYPROJECT2_API ATankAIController : public AAIController
 {
 	GENERATED_BODY()
 
-private:
+protected:
 	virtual void BeginPlay() override;
+
+public:
+	virtual void Tick(float DeltaTime) override;
+
+private:
+	ATank* GetControlledTank() const;
 
 	ATank* GetPlayerTank() const;
 };

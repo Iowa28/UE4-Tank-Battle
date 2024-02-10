@@ -8,20 +8,22 @@ void ATankPlayerController::BeginPlay()
 	Super::BeginPlay();
 }
 
-ATank* ATankPlayerController::GetControlledTank() const
-{
-	return Cast<ATank>(GetPawn());
-}
-
 void ATankPlayerController::Tick(float DeltaSeconds)
 {
 	Super::Tick(DeltaSeconds);
 	AimTowardsCrosshair();
 }
 
+ATank* ATankPlayerController::GetControlledTank() const
+{
+	return Cast<ATank>(GetPawn());
+}
+
 void ATankPlayerController::AimTowardsCrosshair()
 {
-	if (!GetControlledTank())
+	ATank* Tank = GetControlledTank();
+	
+	if (!Tank)
 	{
 		return;
 	}
@@ -29,7 +31,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector HitLocation;
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Location: %s"), *HitLocation.ToString());
+		Tank->AimAt(HitLocation);
 	}
 }
 

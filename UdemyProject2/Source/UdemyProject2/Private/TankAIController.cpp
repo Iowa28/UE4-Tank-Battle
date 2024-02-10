@@ -7,15 +7,31 @@ void ATankAIController::BeginPlay()
 {
 	Super::BeginPlay();
 
-	ATank* Tank = GetPlayerTank();
-	if (Tank)
+	// ATank* Tank = GetPlayerTank();
+	// if (Tank)
+	// {
+	// 	UE_LOG(LogTemp, Warning, TEXT("Player Tank: %s"), *Tank->GetName());
+	// }
+	// else
+	// {
+	// 	UE_LOG(LogTemp, Warning, TEXT("Missing player tank"));
+	// }
+}
+
+void ATankAIController::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+	ATank* PlayerTank = GetPlayerTank();
+	if (PlayerTank)
 	{
-		UE_LOG(LogTemp, Warning, TEXT("Player Tank: %s"), *Tank->GetName());
+		GetControlledTank()->AimAt(PlayerTank->GetActorLocation());
 	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Missing player tank"));
-	}
+}
+
+ATank* ATankAIController::GetControlledTank() const
+{
+	return Cast<ATank>(GetPawn());
 }
 
 ATank* ATankAIController::GetPlayerTank() const

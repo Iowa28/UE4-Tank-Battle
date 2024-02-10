@@ -6,6 +6,8 @@
 ATank::ATank()
 {
 	PrimaryActorTick.bCanEverTick = true;
+
+	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("AimingComponent"));
 }
 
 void ATank::BeginPlay()
@@ -16,6 +18,16 @@ void ATank::BeginPlay()
 void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+}
+
+void ATank::AimAt(FVector HitLocation)
+{
+	TankAimingComponent->AimAt(HitLocation);
+}
+
+void ATank::SetBarrel(UStaticMeshComponent* BarrelToSet)
+{
+	TankAimingComponent->SetBarrel(BarrelToSet);
 }
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)

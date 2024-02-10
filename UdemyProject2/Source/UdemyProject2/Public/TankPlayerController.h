@@ -18,6 +18,8 @@ class UDEMYPROJECT2_API ATankPlayerController : public APlayerController
 protected:
 	virtual void BeginPlay() override;
 
+	virtual void Tick(float DeltaSeconds) override;
+
 public:
 	UPROPERTY(EditAnywhere)
 	float CrossHairXLocation = .5;
@@ -27,12 +29,10 @@ public:
 
 	UPROPERTY(EditAnywhere)
 	float LineTraceRange = 1000000;
-	
-	ATank* GetControlledTank() const;
-
-	virtual void Tick(float DeltaSeconds) override;
 
 private:
+	ATank* GetControlledTank() const;
+	
 	void AimTowardsCrosshair();
 
 	bool GetSightRayHitLocation(FVector& HitLocation) const;
