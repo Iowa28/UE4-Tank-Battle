@@ -2,12 +2,12 @@
 
 #pragma once
 
-#include "TankAimingComponent.h"
 #include "CoreMinimal.h"
 #include "GameFramework/Pawn.h"
 #include "Tank.generated.h"
 
 class UTankBarrel;
+class UTankAimingComponent;
 
 UCLASS()
 class UDEMYPROJECT2_API ATank : public APawn
@@ -21,8 +21,6 @@ protected:
 	UTankAimingComponent* TankAimingComponent = nullptr;
 	
 	virtual void BeginPlay() override;
-
-	virtual void Tick(float DeltaTime) override;
 	
 public:
 	UPROPERTY(EditAnywhere, Category = Firing)
