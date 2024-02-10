@@ -2,14 +2,13 @@
 
 #pragma once
 
-// #include "CoreMinimal.h"
-// #include "TankBarrel.h"
+#include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "TankAimingComponent.generated.h"
 
 class UTankBarrel;
 
-UCLASS( ClassGroup=(Custom), meta=(BlueprintSpawnableComponent) )
+UCLASS(ClassGroup=(Custom), meta=(BlueprintSpawnableComponent))
 class UDEMYPROJECT2_API UTankAimingComponent : public UActorComponent
 {
 	GENERATED_BODY()
