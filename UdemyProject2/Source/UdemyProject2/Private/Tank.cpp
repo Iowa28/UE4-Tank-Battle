@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 
-#include "UdemyProject2/Public/Tank.h"
+#include "Tank.h"
 
 ATank::ATank()
 {
@@ -22,10 +22,10 @@ void ATank::Tick(float DeltaTime)
 
 void ATank::AimAt(FVector HitLocation)
 {
-	TankAimingComponent->AimAt(HitLocation);
+	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
 }
 
-void ATank::SetBarrel(UStaticMeshComponent* BarrelToSet)
+void ATank::SetBarrel(UTankBarrel* BarrelToSet)
 {
 	TankAimingComponent->SetBarrel(BarrelToSet);
 }
