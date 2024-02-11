@@ -21,7 +21,7 @@ protected:
 	virtual void BeginPlay() override;
 
 public:	
-	void AimAt(FVector HitLocation, float LaunchSpeed);
+	void AimAt(FVector HitLocation, float TossSpeed);
 
 	void SetBarrel(UTankBarrel* BarrelToSet);
 

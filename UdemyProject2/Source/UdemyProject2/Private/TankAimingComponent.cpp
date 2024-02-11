@@ -18,7 +18,7 @@ void UTankAimingComponent::BeginPlay()
 	Super::BeginPlay();
 }
 
-void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
+void UTankAimingComponent::AimAt(FVector HitLocation, float TossSpeed)
 {
 	if (!Barrel)
 	{
@@ -33,7 +33,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 		LaunchVelocity,
 		StartLocation,
 		HitLocation,
-		LaunchSpeed,
+		TossSpeed,
 		false,
 		0,
 		0,

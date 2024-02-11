@@ -26,6 +26,9 @@ protected:
 	
 public:
 	UPROPERTY(EditAnywhere, Category = Firing)
+	float TossSpeed = 100000;
+	
+	UPROPERTY(EditAnywhere, Category = Firing)
 	float LaunchSpeed = 4000;
 
 	UPROPERTY(EditAnywhere, Category = Setup)

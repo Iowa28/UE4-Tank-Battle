@@ -1,8 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-
-#include "Projectile.h"
 #include "Tank.h"
+#include "Projectile.h"
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 
@@ -20,7 +19,7 @@ void ATank::BeginPlay()
 
 void ATank::AimAt(FVector HitLocation)
 {
-	TankAimingComponent->AimAt(HitLocation, LaunchSpeed);
+	TankAimingComponent->AimAt(HitLocation, TossSpeed);
 }
 
 void ATank::SetBarrel(UTankBarrel* BarrelToSet)
@@ -44,7 +43,8 @@ void ATank::Fire()
 	FVector Location = Barrel->GetSocketLocation(TEXT("Projectile"));
 	FRotator Rotation = Barrel->GetSocketRotation(TEXT("Projectile"));
 
-	GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, Location, Rotation);
+	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, Location, Rotation);
+	Projectile->LaunchProjectile(LaunchSpeed);
 }
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
