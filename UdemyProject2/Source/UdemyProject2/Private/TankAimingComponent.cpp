@@ -10,7 +10,7 @@
 UTankAimingComponent::UTankAimingComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
-	// UE_LOG(LogTemp, Warning, TEXT("Have turret"));
+	// UE_LOG(LogTemp, Warning, TEXT("Scream Aim Fire"));
 }
 
 void UTankAimingComponent::BeginPlay()
@@ -44,10 +44,6 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float LaunchSpeed)
 	{
 		FVector AimDirection = LaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("Can't find solution"));
 	}
 }
 
