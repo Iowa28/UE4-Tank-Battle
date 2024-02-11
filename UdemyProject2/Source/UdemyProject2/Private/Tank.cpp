@@ -26,6 +26,11 @@ void ATank::SetBarrel(UTankBarrel* BarrelToSet)
 	TankAimingComponent->SetBarrel(BarrelToSet);
 }
 
+void ATank::SetTurret(UTankTurret* TurretToSet)
+{
+	TankAimingComponent->SetTurret(TurretToSet);
+}
+
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
