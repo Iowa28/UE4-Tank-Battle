@@ -31,6 +31,11 @@ void ATank::SetTurret(UTankTurret* TurretToSet)
 	TankAimingComponent->SetTurret(TurretToSet);
 }
 
+void ATank::Fire()
+{
+	UE_LOG(LogTemp, Warning, TEXT("Scream Aim Fire"));
+}
+
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
