@@ -35,16 +35,17 @@ void ATank::SetTurret(UTankTurret* TurretToSet)
 
 void ATank::Fire()
 {
-	if (!Barrel)
+	bool IsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
+	
+	if (Barrel && IsReloaded)
 	{
-		return;
+		FVector Location = Barrel->GetSocketLocation(TEXT("Projectile"));
+		FRotator Rotation = Barrel->GetSocketRotation(TEXT("Projectile"));
+		AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, Location, Rotation);
+		Projectile->LaunchProjectile(LaunchSpeed);
+
+		LastFireTime = FPlatformTime::Seconds();
 	}
-
-	FVector Location = Barrel->GetSocketLocation(TEXT("Projectile"));
-	FRotator Rotation = Barrel->GetSocketRotation(TEXT("Projectile"));
-
-	AProjectile* Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileBlueprint, Location, Rotation);
-	Projectile->LaunchProjectile(LaunchSpeed);
 }
 
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
