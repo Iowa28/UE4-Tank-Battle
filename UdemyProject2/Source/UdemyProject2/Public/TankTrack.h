@@ -16,7 +16,7 @@ class UDEMYPROJECT2_API UTankTrack : public UStaticMeshComponent
 
 public:
 	UPROPERTY(EditDefaultsOnly)
-	float TrackMaxDrivingForce = 400000;
+	float TrackMaxDrivingForce = 40000000;
 	
 	UFUNCTION(BlueprintCallable, Category = Input)
 	void SetThrottle(float Throttle);
