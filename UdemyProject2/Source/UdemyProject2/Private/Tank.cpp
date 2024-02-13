@@ -8,29 +8,16 @@
 ATank::ATank()
 {
 	PrimaryActorTick.bCanEverTick = false;
-
-	TankAimingComponent = CreateDefaultSubobject<UTankAimingComponent>(FName("AimingComponent"));
-}
-
-void ATank::BeginPlay()
-{
-	Super::BeginPlay();
 }
 
 void ATank::AimAt(FVector HitLocation)
 {
+	if (!TankAimingComponent)
+	{
+		return;
+	}
+	
 	TankAimingComponent->AimAt(HitLocation, TossSpeed);
-}
-
-void ATank::SetBarrel(UTankBarrel* BarrelToSet)
-{
-	TankAimingComponent->SetBarrel(BarrelToSet);
-	Barrel = BarrelToSet;
-}
-
-void ATank::SetTurret(UTankTurret* TurretToSet)
-{
-	TankAimingComponent->SetTurret(TurretToSet);
 }
 
 void ATank::Fire()
@@ -46,9 +33,4 @@ void ATank::Fire()
 
 		LastFireTime = FPlatformTime::Seconds();
 	}
-}
-
-void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
-{
-	Super::SetupPlayerInputComponent(PlayerInputComponent);
 }

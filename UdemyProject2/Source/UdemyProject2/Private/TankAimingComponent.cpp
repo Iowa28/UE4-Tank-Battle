@@ -10,9 +10,10 @@ UTankAimingComponent::UTankAimingComponent()
 	// UE_LOG(LogTemp, Warning, TEXT("Test"));
 }
 
-void UTankAimingComponent::BeginPlay()
+void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
 {
-	Super::BeginPlay();
+	Barrel = BarrelToSet;
+	Turret = TurretToSet;
 }
 
 void UTankAimingComponent::AimAt(FVector HitLocation, float TossSpeed)
@@ -42,16 +43,6 @@ void UTankAimingComponent::AimAt(FVector HitLocation, float TossSpeed)
 		FVector AimDirection = LaunchVelocity.GetSafeNormal();
 		MoveBarrelTowards(AimDirection);
 	}
-}
-
-void UTankAimingComponent::SetBarrel(UTankBarrel* BarrelToSet)
-{
-	Barrel = BarrelToSet;
-}
-
-void UTankAimingComponent::SetTurret(UTankTurret* TurretToSet)
-{
-	Turret = TurretToSet;
 }
 
 void UTankAimingComponent::MoveBarrelTowards(FVector AimDirection)

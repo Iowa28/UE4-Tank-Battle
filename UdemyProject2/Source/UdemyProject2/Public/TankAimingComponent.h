@@ -27,15 +27,12 @@ public:
 protected:
 	UPROPERTY(BlueprintReadOnly, Category = "State")
 	EFiringStatus FiringStatus = EFiringStatus::Aiming;
+
+public:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 	
-	virtual void BeginPlay() override;
-
-public:	
 	void AimAt(FVector HitLocation, float TossSpeed);
-
-	void SetBarrel(UTankBarrel* BarrelToSet);
-
-	void SetTurret(UTankTurret* TurretToSet);
 
 private:
 	UTankBarrel* Barrel = nullptr;
