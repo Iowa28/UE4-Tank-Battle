@@ -5,7 +5,7 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
-	// UE_LOG(LogTemp, Error, TEXT("Test"));
+	// UE_LOG(LogTemp, Warning, TEXT("Test"));
 	
 	AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 	if (ensure(AimingComponent))
