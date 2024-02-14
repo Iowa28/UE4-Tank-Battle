@@ -22,6 +22,7 @@ protected:
 
 	UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
 	void FoundAimingComponent(UTankAimingComponent* AimingComponentRef);
+	
 public:
 	UPROPERTY(EditDefaultsOnly)
 	float CrossHairXLocation = .5;
@@ -31,6 +32,7 @@ public:
 
 	UPROPERTY(EditDefaultsOnly)
 	float LineTraceRange = 1000000;
+
 
 private:
 	UTankAimingComponent* AimingComponent = nullptr;
