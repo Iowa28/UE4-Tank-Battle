@@ -26,9 +26,6 @@ protected:
 	
 public:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
-	float TossSpeed = 100000;
-	
-	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LaunchSpeed = 4000;
 	
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
@@ -36,18 +33,11 @@ public:
 
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
-	
-	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
 
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void SetBarrel(UTankBarrel* BarrelToSet);
-
 private:
-	UTankBarrel* Barrel = nullptr;
-
 	double LastFireTime = 0;
 	
 };

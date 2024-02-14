@@ -5,7 +5,7 @@
 #include "AIController.h"
 #include "TankAIController.generated.h"
 
-class ATank;
+class UTankAimingComponent;
 
 UCLASS()
 class UDEMYPROJECT2_API ATankAIController : public AAIController
@@ -22,5 +22,5 @@ private:
 	// How close can the AI tank get
 	float AcceptanceRadius = 1000;
 	
-	ATank* PlayerTank = nullptr;
+	UTankAimingComponent* AimingComponent = nullptr;
 };

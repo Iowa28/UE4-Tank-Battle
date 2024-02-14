@@ -1,6 +1,5 @@
 
 #include "TankPlayerController.h"
-#include "Tank.h"
 #include "TankAimingComponent.h"
 
 void ATankPlayerController::BeginPlay()
@@ -8,7 +7,7 @@ void ATankPlayerController::BeginPlay()
 	Super::BeginPlay();
 	// UE_LOG(LogTemp, Error, TEXT("Test"));
 	
-	UTankAimingComponent* AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
+	AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 	if (ensure(AimingComponent))
 	{
 		FoundAimingComponent(AimingComponent);
@@ -21,16 +20,9 @@ void ATankPlayerController::Tick(float DeltaSeconds)
 	AimTowardsCrosshair();
 }
 
-ATank* ATankPlayerController::GetControlledTank() const
-{
-	return Cast<ATank>(GetPawn());
-}
-
 void ATankPlayerController::AimTowardsCrosshair()
 {
-	ATank* Tank = GetControlledTank();
-	
-	if (!ensure(Tank))
+	if (!ensure(AimingComponent))
 	{
 		return;
 	}
@@ -38,7 +30,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 	FVector HitLocation;
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		Tank->AimAt(HitLocation);
+		AimingComponent->AimAt(HitLocation);
 	}
 }
 

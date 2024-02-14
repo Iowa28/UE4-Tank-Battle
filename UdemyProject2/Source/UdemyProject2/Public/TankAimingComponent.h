@@ -29,10 +29,16 @@ protected:
 	EFiringStatus FiringStatus = EFiringStatus::Aiming;
 
 public:
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	float TossSpeed = 100000;
+
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	float LaunchSpeed = 4000;
+	
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 	
-	void AimAt(FVector HitLocation, float TossSpeed);
+	void AimAt(FVector HitLocation);
 
 private:
 	UTankBarrel* Barrel = nullptr;
