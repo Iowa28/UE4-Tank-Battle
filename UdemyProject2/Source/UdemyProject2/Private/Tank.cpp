@@ -2,7 +2,6 @@
 #include "Tank.h"
 #include "Projectile.h"
 #include "TankAimingComponent.h"
-// #include "TankMovementComponent.h"
 #include "TankBarrel.h"
 
 ATank::ATank()
@@ -10,9 +9,16 @@ ATank::ATank()
 	PrimaryActorTick.bCanEverTick = false;
 }
 
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+
+	TankAimingComponent = FindComponentByClass<UTankAimingComponent>();
+}
+
 void ATank::AimAt(FVector HitLocation)
 {
-	if (!TankAimingComponent)
+	if (!ensure(TankAimingComponent))
 	{
 		return;
 	}
@@ -22,9 +28,14 @@ void ATank::AimAt(FVector HitLocation)
 
 void ATank::Fire()
 {
+	if (!ensure(Barrel))
+	{
+		return;
+	}
+	
 	bool IsReloaded = (FPlatformTime::Seconds() - LastFireTime) > ReloadTimeInSeconds;
 	
-	if (Barrel && IsReloaded)
+	if (IsReloaded)
 	{
 		FVector Location = Barrel->GetSocketLocation(TEXT("Projectile"));
 		FRotator Rotation = Barrel->GetSocketRotation(TEXT("Projectile"));
@@ -33,4 +44,9 @@ void ATank::Fire()
 
 		LastFireTime = FPlatformTime::Seconds();
 	}
+}
+
+void ATank::SetBarrel(UTankBarrel* BarrelToSet)
+{
+	Barrel = BarrelToSet;
 }

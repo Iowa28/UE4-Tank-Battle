@@ -6,15 +6,12 @@
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
+	// UE_LOG(LogTemp, Error, TEXT("Test"));
 	
 	UTankAimingComponent* AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
-	if (AimingComponent)
+	if (ensure(AimingComponent))
 	{
 		FoundAimingComponent(AimingComponent);
-	}
-	else
-	{
-		UE_LOG(LogTemp, Error, TEXT("Test"));
 	}
 }
 
@@ -33,7 +30,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 {
 	ATank* Tank = GetControlledTank();
 	
-	if (!Tank)
+	if (!ensure(Tank))
 	{
 		return;
 	}
