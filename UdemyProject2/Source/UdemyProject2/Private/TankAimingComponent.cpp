@@ -7,7 +7,6 @@
 UTankAimingComponent::UTankAimingComponent()
 {
 	PrimaryComponentTick.bCanEverTick = false;
-	// UE_LOG(LogTemp, Warning, TEXT("Test"));
 }
 
 void UTankAimingComponent::Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet)
