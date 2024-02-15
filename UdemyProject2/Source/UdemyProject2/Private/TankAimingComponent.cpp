@@ -77,7 +77,7 @@ void UTankAimingComponent::AimAt(FVector HitLocation)
 
 void UTankAimingComponent::Fire()
 {
-	if (FiringStatus != EFiringStatus::Locked)
+	if (FiringStatus == EFiringStatus::Reloading)
 	{
 		return;
 	}
