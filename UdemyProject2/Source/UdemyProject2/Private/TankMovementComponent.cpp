@@ -35,5 +35,4 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 	{
 		IntendTurnRight(TurnThrow);
 	}
-	
 }

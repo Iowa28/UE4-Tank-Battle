@@ -59,6 +59,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void SetProjectileBlueprint(TSubclassOf<AProjectile> ProjectileBlueprintToSet);
 
+	bool IsAimLocked();
+
 private:
 	double LastFireTime = 0;
 	

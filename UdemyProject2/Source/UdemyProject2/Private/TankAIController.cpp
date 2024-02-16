@@ -20,10 +20,16 @@ void ATankAIController::Tick(float DeltaTime)
 
 	APawn* PlayerPawn = GetWorld()->GetFirstPlayerController()->GetPawn();
 
-	if (ensure(PlayerPawn))
+	if (!ensure(PlayerPawn))
 	{
-		MoveToActor(PlayerPawn, AcceptanceRadius);
-		AimingComponent->AimAt(PlayerPawn->GetActorLocation());
+		return;
+	}
+
+	MoveToActor(PlayerPawn, AcceptanceRadius);
+	AimingComponent->AimAt(PlayerPawn->GetActorLocation());
+
+	if (AimingComponent->IsAimLocked())
+	{
 		AimingComponent->Fire();
 	}
 }

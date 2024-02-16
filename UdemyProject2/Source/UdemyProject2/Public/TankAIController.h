@@ -16,11 +16,12 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	// How close can the AI tank get
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float AcceptanceRadius = 1000;
+	
 	virtual void Tick(float DeltaTime) override;
 
 private:
-	// How close can the AI tank get
-	float AcceptanceRadius = 1000;
-	
 	UTankAimingComponent* AimingComponent = nullptr;
 };

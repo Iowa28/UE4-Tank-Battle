@@ -100,6 +100,11 @@ void UTankAimingComponent::SetProjectileBlueprint(TSubclassOf<AProjectile> Proje
 	ProjectileBlueprint = ProjectileBlueprintToSet;
 }
 
+bool UTankAimingComponent::IsAimLocked()
+{
+	return FiringStatus == EFiringStatus::Locked;
+}
+
 void UTankAimingComponent::MoveBarrelTowards()
 {
 	if (!ensure(Barrel))
@@ -125,6 +130,6 @@ void UTankAimingComponent::MoveBarrelTowards()
 
 bool UTankAimingComponent::IsBarrelMoving()
 {
-	return !AimDirection.Equals(Barrel->GetForwardVector(), .01);
+	return !AimDirection.Equals(Barrel->GetForwardVector(), .1);
 }
 
