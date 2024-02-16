@@ -27,10 +27,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	void SetThrottle(float Throttle);
 
-	float CurrentThrottle = 0;
+	void DriveTrack();
 
-// private:
-	
+private:
+	float CurrentThrottle = 0;
 	
 	UFUNCTION()
 	void OnHit(
@@ -40,8 +40,6 @@ public:
 		FVector NormalImpulse,
 		const FHitResult& Hit
 	);
-
-	void DriveTrack();
 	
 	void ApplySidewaysForce();
 };
