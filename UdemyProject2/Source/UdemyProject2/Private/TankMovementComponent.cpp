@@ -31,5 +31,9 @@ void UTankMovementComponent::RequestDirectMove(const FVector& MoveVelocity, bool
 	IntendMoveForward(MoveThrow);
 
 	float TurnThrow = FVector::CrossProduct(TankForward, AIForwardIntention).Z;
-	IntendTurnRight(TurnThrow);
+	if (TurnThrow > .01)
+	{
+		IntendTurnRight(TurnThrow);
+	}
+	
 }
