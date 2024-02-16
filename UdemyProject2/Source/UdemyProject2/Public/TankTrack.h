@@ -27,8 +27,10 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Input")
 	void SetThrottle(float Throttle);
 
-private:
 	float CurrentThrottle = 0;
+
+// private:
+	
 	
 	UFUNCTION()
 	void OnHit(

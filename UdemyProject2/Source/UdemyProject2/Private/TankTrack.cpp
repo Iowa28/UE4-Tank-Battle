@@ -23,9 +23,9 @@ void UTankTrack::SetThrottle(float Throttle)
 	// CurrentThrottle = FMath::Clamp<float>(CurrentThrottle + Throttle, -1, 1);
 	CurrentThrottle = Throttle;
 
-	DriveTrack();
-	ApplySidewaysForce();
-	CurrentThrottle = 0;
+	// DriveTrack();
+	// ApplySidewaysForce();
+	// CurrentThrottle = 0;
 }
 
 void UTankTrack::OnHit(
@@ -36,10 +36,9 @@ void UTankTrack::OnHit(
 	const FHitResult& Hit
 )
 {
-	// IsGrounded = true;
-	// DriveTrack();
-	// ApplySidewaysForce();
-	// CurrentThrottle = 0;
+	DriveTrack();
+	ApplySidewaysForce();
+	CurrentThrottle = 0;
 }
 
 void UTankTrack::DriveTrack()
