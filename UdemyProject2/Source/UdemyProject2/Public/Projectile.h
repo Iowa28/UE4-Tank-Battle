@@ -14,14 +14,14 @@ class UDEMYPROJECT2_API AProjectile : public AActor
 public:	
 	AProjectile();
 
-protected:
-	virtual void BeginPlay() override;
-
-public:	
-	virtual void Tick(float DeltaTime) override;
-
 	void LaunchProjectile(float Speed);
 
 private:
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UStaticMeshComponent* CollisionMesh = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UParticleSystemComponent* LaunchBlast = nullptr;
+	
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
 };

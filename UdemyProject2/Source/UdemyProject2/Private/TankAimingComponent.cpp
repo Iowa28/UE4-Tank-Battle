@@ -103,11 +103,6 @@ void UTankAimingComponent::Fire()
 	CurrentAmmo--;
 }
 
-void UTankAimingComponent::SetProjectileBlueprint(TSubclassOf<AProjectile> ProjectileBlueprintToSet)
-{
-	ProjectileBlueprint = ProjectileBlueprintToSet;
-}
-
 bool UTankAimingComponent::IsAimLocked()
 {
 	return FiringStatus == EFiringStatus::Locked;
@@ -131,14 +126,8 @@ void UTankAimingComponent::MoveBarrelTowards()
 	
 	Barrel->Elevate(DeltaRotator.Pitch);
 
-	if (FMath::Abs(DeltaRotator.Yaw) < 180)
-	{
-		Turret->Rotate(DeltaRotator.Yaw);
-	}
-	else
-	{
-		Turret->Rotate(-DeltaRotator.Yaw);
-	}
+	float RotationYaw = FMath::Abs(DeltaRotator.Yaw) < 180 ? DeltaRotator.Yaw : -DeltaRotator.Yaw;
+	Turret->Rotate(RotationYaw);
 }
 
 bool UTankAimingComponent::IsBarrelMoving()

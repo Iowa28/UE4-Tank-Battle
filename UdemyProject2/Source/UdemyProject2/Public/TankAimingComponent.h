@@ -52,21 +52,19 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 	
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
-	
-	void AimAt(FVector HitLocation);
 
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Fire();
-
-	UFUNCTION(BlueprintCallable, Category = "Setup")
-	void SetProjectileBlueprint(TSubclassOf<AProjectile> ProjectileBlueprintToSet);
-
-	bool IsAimLocked();
-
+	
 	UFUNCTION(BlueprintCallable, Category = "Firing")
 	int32 GetAmmo() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
+
+	void AimAt(FVector HitLocation);
+
+	bool IsAimLocked();
 
 private:
 	int32 CurrentAmmo = 3;
@@ -78,6 +76,7 @@ private:
 	UTankTurret* Turret = nullptr;
 
 	FVector AimDirection;
+	
 
 	void MoveBarrelTowards();
 
