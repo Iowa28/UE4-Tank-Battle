@@ -24,15 +24,14 @@ protected:
 	void FoundAimingComponent(UTankAimingComponent* AimingComponentRef);
 	
 public:
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float CrossHairXLocation = .5;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float CrossHairYLocation = .3333;
 
-	UPROPERTY(EditDefaultsOnly)
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float LineTraceRange = 1000000;
-
 
 private:
 	UTankAimingComponent* AimingComponent = nullptr;

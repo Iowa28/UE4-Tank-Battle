@@ -10,7 +10,8 @@ enum class EFiringStatus : uint8
 {
 	Reloading,
 	Aiming,
-	Locked
+	Locked,
+	OutOfAmmo
 };
 
 class UTankBarrel;
@@ -45,6 +46,9 @@ public:
 	UPROPERTY(EditDefaultsOnly, Category = "Firing")
 	float ReloadTimeInSeconds = 3;
 
+	UPROPERTY(EditDefaultsOnly, Category = "Firing")
+	int32 MaxAmmo = 20;
+
 	UPROPERTY(EditDefaultsOnly, Category = "Setup")
 	TSubclassOf<AProjectile> ProjectileBlueprint;
 	
@@ -61,7 +65,12 @@ public:
 
 	bool IsAimLocked();
 
+	UFUNCTION(BlueprintCallable, Category = "Firing")
+	int32 GetAmmo() const;
+
 private:
+	int32 CurrentAmmo = 3;
+	
 	double LastFireTime = 0;
 	
 	UTankBarrel* Barrel = nullptr;
