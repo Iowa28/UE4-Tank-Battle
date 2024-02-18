@@ -15,6 +15,10 @@ class UDEMYPROJECT2_API ATank : public APawn
 public:
 	ATank();
 
+protected:
+	virtual void BeginPlay() override;
+
+public:
 	UFUNCTION(BlueprintPure, Category = "Health")
 	float GetHealthPercent() const;
 	

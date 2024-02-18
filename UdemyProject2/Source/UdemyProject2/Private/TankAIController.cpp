@@ -50,10 +50,13 @@ void ATankAIController::SetPawn(APawn* InPawn)
 		return;
 	}
 
-	PossessedTank->OnDeath.AddDynamic(this, &ATankAIController::OnPossessedTankDeath);
+	PossessedTank->OnDeath.AddUniqueDynamic(this, &ATankAIController::OnPossessedTankDeath);
 }
 
 void ATankAIController::OnPossessedTankDeath()
 {
-	UE_LOG(LogTemp, Warning, TEXT("Deadge test"));
+	if (GetPawn())
+	{
+		GetPawn()->DetachFromControllerPendingDestroy();
+	}
 }
