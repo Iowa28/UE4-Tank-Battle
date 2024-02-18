@@ -14,6 +14,10 @@ class UDEMYPROJECT2_API AProjectile : public AActor
 public:	
 	AProjectile();
 
+protected:
+	virtual void BeginPlay() override;
+
+public:
 	void LaunchProjectile(float Speed);
 
 private:
@@ -22,6 +26,12 @@ private:
 
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	UParticleSystemComponent* LaunchBlast = nullptr;
+
+	UPROPERTY(VisibleAnywhere, Category = "Components")
+	UParticleSystemComponent* ImpactBlast = nullptr;
 	
 	UProjectileMovementComponent* ProjectileMovement = nullptr;
+
+	UFUNCTION()
+	void OnHit(AActor* SelfActor, AActor* OtherActor, FVector NormalImpulse, const FHitResult& Hit);
 };
