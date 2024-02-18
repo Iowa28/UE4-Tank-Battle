@@ -4,9 +4,25 @@
 ATank::ATank()
 {
 	PrimaryActorTick.bCanEverTick = false;
+
+	CurrentHealth = MaxHealth;
 }
 
-void ATank::BeginPlay()
+float ATank::TakeDamage(float Damage, const FDamageEvent& DamageEvent, AController* EventInstigator, AActor* DamageCauser)
 {
-	Super::BeginPlay();
+	int32 DamagePoints = FPlatformMath::RoundToInt(Damage);
+	int32 DamageToApply = FMath::Clamp(DamagePoints, 0, CurrentHealth);
+
+	CurrentHealth -= DamageToApply;
+	if (CurrentHealth <= 0)
+	{
+		UE_LOG(LogTemp, Warning, TEXT("Deadge"));
+	}
+
+	return DamageToApply;
+}
+
+float ATank::GetHealthPercent() const
+{
+	return static_cast<float>(CurrentHealth) / static_cast<float>(MaxHealth);
 }
