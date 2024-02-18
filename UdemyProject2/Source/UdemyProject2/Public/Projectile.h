@@ -19,6 +19,9 @@ protected:
 	virtual void BeginPlay() override;
 
 public:
+	UPROPERTY(EditDefaultsOnly, Category = "Setup")
+	float DestroyDelay = 10.f;
+	
 	void LaunchProjectile(float Speed);
 
 private:
@@ -38,4 +41,7 @@ private:
 
 	UFUNCTION()
 	void OnHit(AActor* SelfActor, AActor* OtherActor, FVector NormalImpulse, const FHitResult& Hit);
+
+	UFUNCTION()
+	void OnTimerEnd();
 };
