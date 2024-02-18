@@ -22,6 +22,11 @@ public:
 	
 	virtual void Tick(float DeltaTime) override;
 
+	virtual void SetPawn(APawn* InPawn) override;
+
 private:
 	UTankAimingComponent* AimingComponent = nullptr;
+	
+	UFUNCTION()
+	void OnPossessedTankDeath();
 };
